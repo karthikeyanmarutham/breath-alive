@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Locations — BreatheAlive | Bengaluru, Hyderabad, Kannur</title>
+    <meta name="description"
+        content="Visit BreatheAlive in Bengaluru, Hyderabad or Kannur. Airway, face and sleep care for infants, children and adults. Addresses, hours, directions and booking." />
+    <link rel="canonical" href="https://breathealive.in/locations" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Locations — BreatheAlive" />
+    <meta property="og:description" content="Three clinics, one standard of care. Bengaluru, Hyderabad and Kannur." />
+    <meta property="og:url" content="https://breathealive.in/locations" />
+    <meta property="og:image" content="https://breathealive.in/og-locations.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Locations — BreatheAlive" />
+    <meta name="twitter:description" content="Three clinics, one standard of care." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- Page-specific additions -->
+    <style>
+        /* ---- Location switcher tabs ---- */
+        .loc-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: var(--color-surface-soft);
+            padding: 6px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .loc-switcher button {
+            background: transparent;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-body);
+            cursor: pointer;
+            transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+        }
+
+        .loc-switcher button:hover {
+            color: var(--color-primary);
+        }
+
+        .loc-switcher button.is-active {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ---- Map wrap ---- */
+        .map-wrap {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+            background: var(--color-surface-soft);
+            aspect-ratio: 16 / 10;
+            margin-bottom: 32px;
+        }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .map-panel {
+            display: none;
+        }
+
+        .map-panel.is-active {
+            display: block;
+        }
+
+        /* ---- Full location card ---- */
+        .loc-card {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 0;
+            background: var(--color-surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .loc-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loc-card__media {
+            position: relative;
+            background:
+                radial-gradient(120% 100% at 20% 20%, rgba(110, 193, 228, 0.30), transparent 60%),
+                radial-gradient(120% 100% at 90% 90%, rgba(61, 211, 133, 0.20), transparent 60%),
+                var(--color-surface-soft);
+            display: grid;
+            place-items: center;
+            padding: 40px;
+            min-height: 320px;
+        }
+
+        .loc-card__media svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .loc-card__body {
+            padding: clamp(28px, 4vw, 44px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .loc-card__head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .loc-card__head h3 {
+            margin: 0;
+            font-size: clamp(24px, 2.4vw, 30px);
+        }
+
+        .loc-card__tag {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            background: var(--color-surface-soft);
+            padding: 6px 12px;
+            border-radius: 100px;
+        }
+
+        .loc-card__desc {
+            font-size: 15px;
+            color: var(--color-body);
+            margin: 0;
+        }
+
+        /* ---- Hours mini ---- */
+        .hours {
+            display: grid;
+            gap: 6px;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border-soft);
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-row span:last-child {
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        /* ---- Why choose strip ---- */
+        .why-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 900px) {
+            .why-strip {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .why-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .why-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            font-size: 14px;
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        .why-item svg {
+            flex-shrink: 0;
+            color: var(--color-primary);
+            margin-top: 2px;
+        }
+
+        /* ---- Map-style overview ---- */
+        .map-overview {
+            background: var(--color-surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            padding: clamp(28px, 4vw, 48px);
+            text-align: center;
+        }
+
+        .map-overview svg {
+            max-width: 520px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* ---- Nearby areas list ---- */
+        .nearby {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .nearby span {
+            font-size: 13px;
+            color: var(--color-body);
+            background: var(--color-surface-soft);
+            border: 1px solid var(--border-soft);
+            padding: 6px 12px;
+            border-radius: 100px;
+        }
+
+        @media (max-width: 720px) {
+            .loc-switcher {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .loc-switcher button {
+                flex: 1;
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+
+    <!-- Structured data: ItemList of MedicalClinic -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "BreatheAlive Locations",
+    "itemListElement": [
+      {
+        "@type": "MedicalClinic",
+        "position": 1,
+        "name": "BreatheAlive Bengaluru",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Indiranagar",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "postalCode": "560038",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-00000-00000"
+      },
+      {
+        "@type": "MedicalClinic",
+        "position": 2,
+        "name": "BreatheAlive Hyderabad",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jubilee Hills",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500033",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-00000-00000"
+      },
+      {
+        "@type": "MedicalClinic",
+        "position": 3,
+        "name": "BreatheAlive Kannur",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kannur",
+          "addressLocality": "Kannur",
+          "addressRegion": "Kerala",
+          "postalCode": "670001",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-00000-00000"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============================= HEADER ============================= -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="/" class="logo" aria-label="BreatheAlive home">
+                <img src="assets/images/logo.png" alt="BreatheAlive — Airway, Face & Sleep Centre" class="logo__img"
+                    width="220" height="80" loading="eager" decoding="async" />
+                <!-- <span>BreatheAlive</span> -->
+            </a>
+
+            <nav class="nav" aria-label="Primary">
+                <a class="nav__link" href="/">Home</a>
+                <a class="nav__link" href="about.html">About</a>
+                <div class="nav__dropdown">
+                    <a class="nav__link" href="care.html" aria-haspopup="true">Care ▾</a>
+                    <div class="nav__dropdown-menu" role="menu">
+                        <a href="infants.html" role="menuitem">Infants</a>
+                        <a href="children.html" role="menuitem">Children</a>
+                        <a href="adults.html" role="menuitem">Adults</a>
+                    </div>
+                </div>
+                <a class="nav__link" href="locations.html" aria-current="page">Locations</a>
+                <a class="nav__link" href="resources.html">Resources</a>
+                <a class="nav__link" href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header__actions">
+                <a class="btn btn--secondary" href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+                <a class="btn btn--primary" href="book.html">Book Appointment</a>
+                <button class="header__menu-btn" data-menu-open aria-label="Open menu" aria-controls="mobile-drawer">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile drawer -->
+    <div class="drawer" id="mobile-drawer" data-drawer aria-hidden="true">
+        <div class="drawer__head">
+            <a href="/" class="logo"><span class="logo__mark" aria-hidden="true">B</span><span>BreatheAlive</span></a>
+            <button class="drawer__close" data-menu-close aria-label="Close menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </div>
+        <nav class="drawer__nav" aria-label="Mobile">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="care.html">Care</a>
+            <a href="infants.html">— Infants</a>
+            <a href="children.html">— Children</a>
+            <a href="adults.html">— Adults</a>
+            <a href="locations.html" aria-current="page">Locations</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="drawer__cta">
+            <a class="btn btn--primary" href="book.html">Book Appointment</a>
+            <a class="btn btn--secondary" href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <!-- ============================= BREADCRUMBS ============================= -->
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Locations</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- ============================= HERO ============================= -->
+        <section class="section" style="padding-top: 24px; padding-bottom: 40px;">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="label">Locations</span>
+                    <h1 style="font-size: clamp(38px, 4.5vw, 64px);">Find BreatheAlive near you.</h1>
+                    <p class="lead">Three clinics. One standard of specialist-led, airway-focused care. Choose the
+                        location that works best for you — or contact us if you're unsure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= MAP-STYLE OVERVIEW ============================= -->
+        <section class="section" style="padding-top: 0; padding-bottom: 48px;">
+            <div class="container">
+                <div class="map-overview" data-reveal>
+                    <svg viewBox="0 0 500 420" role="img"
+                        aria-label="Map overview of BreatheAlive locations across India">
+                        <defs>
+                            <linearGradient id="ind" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#6EC1E4" stop-opacity="0.20" />
+                                <stop offset="100%" stop-color="#298788" stop-opacity="0.10" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Abstract India silhouette -->
+                        <path d="M190 40 C 240 30, 300 50, 320 80
+                   C 340 110, 330 130, 350 150
+                   C 370 170, 380 190, 370 220
+                   C 360 250, 330 280, 300 300
+                   C 270 320, 250 350, 235 380
+                   C 225 400, 220 400, 215 380
+                   C 205 340, 175 300, 145 270
+                   C 115 240, 100 200, 110 160
+                   C 120 120, 150 60, 190 40 Z" fill="url(#ind)" stroke="#298788" stroke-width="1.2"
+                            stroke-opacity="0.4" />
+                        <!-- Kannur (Kerala) -->
+                        <circle cx="200" cy="350" r="7" fill="#298788" />
+                        <circle cx="200" cy="350" r="16" fill="none" stroke="#298788" stroke-opacity="0.35" />
+                        <text x="220" y="356" font-family="Manrope, sans-serif" font-size="12" font-weight="600"
+                            fill="#17383A">Kannur</text>
+                        <!-- Bengaluru (Karnataka) -->
+                        <circle cx="220" cy="290" r="7" fill="#298788" />
+                        <circle cx="220" cy="290" r="16" fill="none" stroke="#298788" stroke-opacity="0.35" />
+                        <text x="240" y="296" font-family="Manrope, sans-serif" font-size="12" font-weight="600"
+                            fill="#17383A">Bengaluru</text>
+                        <!-- Hyderabad (Telangana) -->
+                        <circle cx="240" cy="240" r="7" fill="#298788" />
+                        <circle cx="240" cy="240" r="16" fill="none" stroke="#298788" stroke-opacity="0.35" />
+                        <text x="260" y="246" font-family="Manrope, sans-serif" font-size="12" font-weight="600"
+                            fill="#17383A">Hyderabad</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= LOCATION SWITCHER + MAPS ============================= -->
+        <section class="section section--soft" aria-labelledby="map-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="label">Choose a location</span>
+                    <h2 id="map-title">Our clinics</h2>
+                    <p class="lead">Select a city to see the clinic on the map, along with address, hours and
+                        directions.</p>
+                </div>
+
+                <div class="loc-switcher" role="tablist" aria-label="Select a clinic location" data-reveal>
+                    <button type="button" role="tab" aria-selected="true" aria-controls="panel-bengaluru"
+                        id="tab-bengaluru" class="is-active" data-loc="bengaluru">Bengaluru</button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="panel-hyderabad"
+                        id="tab-hyderabad" data-loc="hyderabad" tabindex="-1">Hyderabad</button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="panel-kannur" id="tab-kannur"
+                        data-loc="kannur" tabindex="-1">Kannur</button>
+                </div>
+
+                <!-- ============= BENGALURU ============= -->
+                <div class="map-panel is-active" id="panel-bengaluru" role="tabpanel" aria-labelledby="tab-bengaluru">
+                    <div class="map-wrap">
+                        <iframe title="BreatheAlive Bengaluru location map"
+                            src="https://www.google.com/maps?q=Indiranagar,Bengaluru,Karnataka&output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+
+                    <article class="loc-card" id="bengaluru">
+                        <div class="loc-card__media" aria-hidden="true">
+                            <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <radialGradient id="bgl" cx="0.3" cy="0.3">
+                                        <stop offset="0%" stop-color="#6EC1E4" stop-opacity="0.5" />
+                                        <stop offset="100%" stop-color="#6EC1E4" stop-opacity="0" />
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="140" cy="120" r="140" fill="url(#bgl)" />
+                                <path d="M40 260 Q 200 160, 360 260" stroke="#3DD385" stroke-width="20" fill="none"
+                                    opacity="0.18" stroke-linecap="round" />
+                                <path d="M60 280 Q 200 190, 340 280" stroke="#298788" stroke-width="10" fill="none"
+                                    opacity="0.15" stroke-linecap="round" />
+                                <text x="200" y="200" text-anchor="middle" font-family="Manrope, sans-serif"
+                                    font-size="28" font-weight="700" fill="#298788" opacity="0.85">Bengaluru</text>
+                            </svg>
+                        </div>
+
+                        <div class="loc-card__body">
+                            <div class="loc-card__head">
+                                <h3>BreatheAlive Bengaluru</h3>
+                                <span class="loc-card__tag">Bengaluru</span>
+                            </div>
+                            <p class="loc-card__desc">Airway, face and sleep care for infants, children and adults — in
+                                the heart of Indiranagar.</p>
+
+                            <ul class="info-list">
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path d="M12 22s-7-6.4-7-12a7 7 0 1114 0c0 5.6-7 12-7 12z" />
+                                        <circle cx="12" cy="10" r="2.5" />
+                                    </svg>
+                                    <span>Indiranagar, Bengaluru, Karnataka 560038</span>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <a href="tel:+910000000000">+91 00000 00000</a>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                                        <path d="M3 7l9 6 9-6" />
+                                    </svg>
+                                    <a href="mailto:bengaluru@breathealive.in">bengaluru@breathealive.in</a>
+                                </li>
+                            </ul>
+
+                            <div class="hours" aria-label="Opening hours">
+                                <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 6:00 PM</span></div>
+                                <div class="hours-row"><span>Saturday</span><span>9:00 AM – 2:00 PM</span></div>
+                                <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                            </div>
+
+                            <div>
+                                <span class="label" style="margin-bottom: 4px;">Areas served</span>
+                                <div class="nearby">
+                                    <span>Indiranagar</span><span>Koramangala</span><span>Whitefield</span>
+                                    <span>HSR Layout</span><span>Jayanagar</span><span>MG Road</span>
+                                </div>
+                            </div>
+
+                            <div class="btn-row">
+                                <a class="btn btn--primary" href="book.html">Book Appointment</a>
+                                <a class="btn btn--secondary"
+                                    href="https://www.google.com/maps/dir/?api=1&destination=Indiranagar,Bengaluru,Karnataka"
+                                    target="_blank" rel="noopener">Get Directions</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ============= HYDERABAD ============= -->
+                <div class="map-panel" id="panel-hyderabad" role="tabpanel" aria-labelledby="tab-hyderabad" hidden>
+                    <div class="map-wrap">
+                        <iframe title="BreatheAlive Hyderabad location map"
+                            src="https://www.google.com/maps?q=Jubilee+Hills,Hyderabad,Telangana&output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+
+                    <article class="loc-card" id="hyderabad">
+                        <div class="loc-card__media" aria-hidden="true">
+                            <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <radialGradient id="hyd" cx="0.3" cy="0.3">
+                                        <stop offset="0%" stop-color="#6EC1E4" stop-opacity="0.5" />
+                                        <stop offset="100%" stop-color="#6EC1E4" stop-opacity="0" />
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="140" cy="120" r="140" fill="url(#hyd)" />
+                                <path d="M40 260 Q 200 160, 360 260" stroke="#3DD385" stroke-width="20" fill="none"
+                                    opacity="0.18" stroke-linecap="round" />
+                                <path d="M60 280 Q 200 190, 340 280" stroke="#298788" stroke-width="10" fill="none"
+                                    opacity="0.15" stroke-linecap="round" />
+                                <text x="200" y="200" text-anchor="middle" font-family="Manrope, sans-serif"
+                                    font-size="28" font-weight="700" fill="#298788" opacity="0.85">Hyderabad</text>
+                            </svg>
+                        </div>
+
+                        <div class="loc-card__body">
+                            <div class="loc-card__head">
+                                <h3>BreatheAlive Hyderabad</h3>
+                                <span class="loc-card__tag">Hyderabad</span>
+                            </div>
+                            <p class="loc-card__desc">Specialist-led airway and sleep care for children and adults,
+                                based in Jubilee Hills.</p>
+
+                            <ul class="info-list">
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path d="M12 22s-7-6.4-7-12a7 7 0 1114 0c0 5.6-7 12-7 12z" />
+                                        <circle cx="12" cy="10" r="2.5" />
+                                    </svg>
+                                    <span>Jubilee Hills, Hyderabad, Telangana 500033</span>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <a href="tel:+910000000000">+91 00000 00000</a>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                                        <path d="M3 7l9 6 9-6" />
+                                    </svg>
+                                    <a href="mailto:hyderabad@breathealive.in">hyderabad@breathealive.in</a>
+                                </li>
+                            </ul>
+
+                            <div class="hours" aria-label="Opening hours">
+                                <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 6:00 PM</span></div>
+                                <div class="hours-row"><span>Saturday</span><span>9:00 AM – 2:00 PM</span></div>
+                                <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                            </div>
+
+                            <div>
+                                <span class="label" style="margin-bottom: 4px;">Areas served</span>
+                                <div class="nearby">
+                                    <span>Jubilee Hills</span><span>Banjara Hills</span><span>Madhapur</span>
+                                    <span>Gachibowli</span><span>Hitec City</span><span>Kondapur</span>
+                                </div>
+                            </div>
+
+                            <div class="btn-row">
+                                <a class="btn btn--primary" href="book.html">Book Appointment</a>
+                                <a class="btn btn--secondary"
+                                    href="https://www.google.com/maps/dir/?api=1&destination=Jubilee+Hills,Hyderabad,Telangana"
+                                    target="_blank" rel="noopener">Get Directions</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ============= KANNUR ============= -->
+                <div class="map-panel" id="panel-kannur" role="tabpanel" aria-labelledby="tab-kannur" hidden>
+                    <div class="map-wrap">
+                        <iframe title="BreatheAlive Kannur location map"
+                            src="https://www.google.com/maps?q=Kannur,Kerala&output=embed" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    </div>
+
+                    <article class="loc-card" id="kannur">
+                        <div class="loc-card__media" aria-hidden="true">
+                            <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <radialGradient id="knr" cx="0.3" cy="0.3">
+                                        <stop offset="0%" stop-color="#6EC1E4" stop-opacity="0.5" />
+                                        <stop offset="100%" stop-color="#6EC1E4" stop-opacity="0" />
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="140" cy="120" r="140" fill="url(#knr)" />
+                                <path d="M40 260 Q 200 160, 360 260" stroke="#3DD385" stroke-width="20" fill="none"
+                                    opacity="0.18" stroke-linecap="round" />
+                                <path d="M60 280 Q 200 190, 340 280" stroke="#298788" stroke-width="10" fill="none"
+                                    opacity="0.15" stroke-linecap="round" />
+                                <text x="200" y="200" text-anchor="middle" font-family="Manrope, sans-serif"
+                                    font-size="28" font-weight="700" fill="#298788" opacity="0.85">Kannur</text>
+                            </svg>
+                        </div>
+
+                        <div class="loc-card__body">
+                            <div class="loc-card__head">
+                                <h3>BreatheAlive Kannur</h3>
+                                <span class="loc-card__tag">Kannur</span>
+                            </div>
+                            <p class="loc-card__desc">Airway, breathing and sleep care for families in Kannur and
+                                surrounding areas.</p>
+
+                            <ul class="info-list">
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path d="M12 22s-7-6.4-7-12a7 7 0 1114 0c0 5.6-7 12-7 12z" />
+                                        <circle cx="12" cy="10" r="2.5" />
+                                    </svg>
+                                    <span>Kannur, Kerala 670001</span>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <a href="tel:+910000000000">+91 00000 00000</a>
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" aria-hidden="true">
+                                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                                        <path d="M3 7l9 6 9-6" />
+                                    </svg>
+                                    <a href="mailto:kannur@breathealive.in">kannur@breathealive.in</a>
+                                </li>
+                            </ul>
+
+                            <div class="hours" aria-label="Opening hours">
+                                <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 6:00 PM</span></div>
+                                <div class="hours-row"><span>Saturday</span><span>9:00 AM – 2:00 PM</span></div>
+                                <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                            </div>
+
+                            <div>
+                                <span class="label" style="margin-bottom: 4px;">Areas served</span>
+                                <div class="nearby">
+                                    <span>Kannur</span><span>Thalassery</span><span>Payyanur</span>
+                                    <span>Mattannur</span><span>Iritty</span><span>Kuthuparamba</span>
+                                </div>
+                            </div>
+
+                            <div class="btn-row">
+                                <a class="btn btn--primary" href="book.html">Book Appointment</a>
+                                <a class="btn btn--secondary"
+                                    href="https://www.google.com/maps/dir/?api=1&destination=Kannur,Kerala"
+                                    target="_blank" rel="noopener">Get Directions</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================= WHY CHOOSE STRIP ============================= -->
+        <section class="section" aria-labelledby="why-title">
+            <div class="container">
+                <div class="section-head center" data-reveal>
+                    <span class="label">Why choose a BreatheAlive clinic</span>
+                    <h2 id="why-title">Same standard of care, wherever you visit.</h2>
+                </div>
+
+                <div class="why-strip">
+                    <div class="why-item" data-reveal>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" aria-hidden="true">
+                            <path
+                                d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
+                        </svg>
+                        <span>Specialist-led care at every location</span>
+                    </div>
+                    <div class="why-item" data-reveal>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" aria-hidden="true">
+                            <circle cx="9" cy="8" r="3" />
+                            <circle cx="17" cy="10" r="2.5" />
+                            <path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 1.5-3.5 3.5-3.5S22 18 22 20" />
+                        </svg>
+                        <span>Infants, children and adults</span>
+                    </div>
+                    <div class="why-item" data-reveal>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" aria-hidden="true">
+                            <path d="M12 3v18M3 12h18" />
+                        </svg>
+                        <span>Airway-focused, whole-picture approach</span>
+                    </div>
+                    <div class="why-item" data-reveal>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        <span>Appointments within reasonable time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= SERVICES OFFERED AT ALL LOCATIONS ============================= -->
+        <section class="section section--soft" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="label">Available at every location</span>
+                    <h2 id="services-title">What you can book at any clinic.</h2>
+                </div>
+
+                <div class="grid-3">
+                    <a class="card" href="infants.html" data-reveal>
+                        <div class="card__icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
+                                <circle cx="12" cy="8" r="3" />
+                                <path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
+                            </svg>
+                        </div>
+                        <h3>Infant Airway &amp; Feeding</h3>
+                        <p>Early evaluation for breathing, feeding and oral function.</p>
+                        <span class="card__link">Learn more</span>
+                    </a>
+                    <a class="card" href="children.html" data-reveal>
+                        <div class="card__icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
+                                <circle cx="12" cy="8" r="3" />
+                                <path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
+                                <path d="M4 12h3M17 12h3" />
+                            </svg>
+                        </div>
+                        <h3>Children's Airway &amp; Sleep</h3>
+                        <p>Supporting healthy breathing, sleep and facial development.</p>
+                        <span class="card__link">Learn more</span>
+                    </a>
+                    <a class="card" href="adults.html" data-reveal>
+                        <div class="card__icon" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
+                                <circle cx="12" cy="8" r="3" />
+                                <path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
+                                <path d="M9 15v6M15 15v6" />
+                            </svg>
+                        </div>
+                        <h3>Adult Airway &amp; Sleep</h3>
+                        <p>Specialist evaluation for breathing, snoring and sleep concerns.</p>
+                        <span class="card__link">Learn more</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= FAQ ============================= -->
+        <section class="section" aria-labelledby="faq-title">
+            <div class="container">
+                <div class="section-head center" data-reveal>
+                    <span class="label">FAQ</span>
+                    <h2 id="faq-title">Visiting our clinics</h2>
+                </div>
+
+                <div class="faq">
+                    <details data-reveal>
+                        <summary>Which clinic should I choose?</summary>
+                        <p>Choose the clinic closest to you, or the one where your preferred specialist practices. If
+                            you're unsure, contact us and we'll guide you.</p>
+                    </details>
+                    <details data-reveal>
+                        <summary>Are the services the same at every location?</summary>
+                        <p>Yes. Infants, children and adult care is available at all three locations, following the same
+                            standard of specialist-led assessment.</p>
+                    </details>
+                    <details data-reveal>
+                        <summary>Do you offer teleconsultation?</summary>
+                        <p>Teleconsultation availability depends on your location and concern. Please contact us to
+                            check.</p>
+                    </details>
+                    <details data-reveal>
+                        <summary>Do I need to book in advance?</summary>
+                        <p>We recommend booking in advance so we can give you the time and attention you deserve. Please
+                            call to check same-day availability.</p>
+                    </details>
+                    <details data-reveal>
+                        <summary>Is parking available?</summary>
+                        <p>Parking and accessibility details vary by location. Please contact the specific clinic for
+                            details.</p>
+                    </details>
+                    <details data-reveal>
+                        <summary>How do I reschedule?</summary>
+                        <p>Please call or WhatsApp the clinic you originally booked with. We'll do our best to find a
+                            time that works.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= FINAL CTA ============================= -->
+        <section class="section section--dark cta-band" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-band__inner" data-reveal>
+                    <span class="label" style="color:#9FD6D3">Get started</span>
+                    <h2 id="cta-title">Better breathing starts with understanding.</h2>
+                    <p class="lead" style="color:#C7DAD8">Book a specialist consultation at a clinic near you, or reach
+                        out with your questions.</p>
+                    <div class="btn-row mt-32">
+                        <a class="btn btn--white" href="book.html">Book an Appointment</a>
+                        <a class="btn btn--outline-white" href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+                <svg class="cta-band__art" viewBox="0 0 500 500" aria-hidden="true">
+                    <circle cx="250" cy="250" r="240" fill="none" stroke="#6EC1E4" stroke-opacity="0.35" />
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#3DD385" stroke-opacity="0.30" />
+                    <circle cx="250" cy="250" r="120" fill="none" stroke="#D0FF71" stroke-opacity="0.25" />
+                </svg>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================= FOOTER ============================= -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="/" class="logo" aria-label="BreatheAlive home">
+                        <img src="assets/images/logo.png" alt="BreatheAlive" class="logo__img" width="220" height="52"
+                            loading="lazy" decoding="async" />
+                    </a>
+                    <p class="footer__desc">Advanced Airway, Face &amp; Sleep Care — for infants, children and adults.
+                    </p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="care.html">Care</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="book.html">Book Appointment</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="locations.html#bengaluru">Bengaluru</a></li>
+                        <li><a href="locations.html#hyderabad">Hyderabad</a></li>
+                        <li><a href="locations.html#kannur">Kannur</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+                        <li><a href="mailto:hello@breathealive.in">hello@breathealive.in</a></li>
+                        <li><a href="https://wa.me/910000000000" rel="noopener">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div>© <span class="year"></span> BreatheAlive. All rights reserved.</div>
+                <div class="footer__legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================= MOBILE BOTTOM BAR ============================= -->
+    <div class="bottom-bar" role="navigation" aria-label="Quick actions">
+        <div class="container bottom-bar__inner">
+            <a href="tel:+910000000000">Call</a>
+            <a href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+            <a class="is-primary" href="book.html">Book Appointment</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js" defer></script>
+
+    <!-- Location switcher behavior -->
+    <script>
+        (function () {
+            'use strict';
+
+            const tabs = document.querySelectorAll('.loc-switcher [role="tab"]');
+            const panels = document.querySelectorAll('.map-panel');
+
+            function activate(id) {
+                tabs.forEach(function (t) {
+                    const isActive = t.dataset.loc === id;
+                    t.classList.toggle('is-active', isActive);
+                    t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    t.tabIndex = isActive ? 0 : -1;
+                });
+                panels.forEach(function (p) {
+                    const isActive = p.id === 'panel-' + id;
+                    p.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        p.removeAttribute('hidden');
+                    } else {
+                        p.setAttribute('hidden', '');
+                    }
+                });
+            }
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    activate(tab.dataset.loc);
+                });
+                tab.addEventListener('keydown', function (e) {
+                    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+                    if (!keys.includes(e.key)) return;
+                    e.preventDefault();
+                    const list = Array.from(tabs);
+                    const idx = list.indexOf(tab);
+                    let next = idx;
+                    if (e.key === 'ArrowRight') next = (idx + 1) % list.length;
+                    if (e.key === 'ArrowLeft') next = (idx - 1 + list.length) % list.length;
+                    if (e.key === 'Home') next = 0;
+                    if (e.key === 'End') next = list.length - 1;
+                    list[next].focus();
+                    activate(list[next].dataset.loc);
+                });
+            });
+
+            // Deep-link support: /locations.html#hyderabad or #kannur
+            const hash = window.location.hash.replace('#', '');
+            const valid = ['bengaluru', 'hyderabad', 'kannur'];
+            if (valid.includes(hash)) {
+                activate(hash);
+            }
+
+            // Footer year
+            document.querySelectorAll('.year').forEach(function (e) {
+                e.textContent = new Date().getFullYear();
+            });
+        })();
+    </script>
+</body>
+
+</html>

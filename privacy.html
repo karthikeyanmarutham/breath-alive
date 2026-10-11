@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — BreatheAlive</title>
+    <meta name="description"
+        content="How BreatheAlive collects, uses, stores and protects your personal information, including health data shared through our website." />
+    <link rel="canonical" href="https://breathealive.in/privacy" />
+    <meta name="robots" content="noindex, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Privacy Policy — BreatheAlive" />
+    <meta property="og:url" content="https://breathealive.in/privacy" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <style>
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .legal-toc {
+            position: sticky;
+            top: 100px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+
+        @media (max-width: 960px) {
+            .legal-toc {
+                position: static;
+            }
+        }
+
+        .legal-toc h4 {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin: 0 0 14px;
+        }
+
+        .legal-toc ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .legal-toc a {
+            color: var(--color-body);
+            font-size: 14px;
+            line-height: 1.5;
+            display: block;
+            padding: 4px 0 4px 10px;
+            border-left: 2px solid transparent;
+            margin-left: -12px;
+            transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+        }
+
+        .legal-toc a:hover {
+            color: var(--color-primary);
+            border-left-color: var(--color-primary);
+        }
+
+        .legal-body {
+            max-width: 760px;
+        }
+
+        .legal-body h2 {
+            font-size: clamp(22px, 2.2vw, 28px);
+            margin-top: 48px;
+            margin-bottom: 16px;
+            scroll-margin-top: 100px;
+        }
+
+        .legal-body h2:first-child {
+            margin-top: 0;
+        }
+
+        .legal-body h3 {
+            font-size: 18px;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+        .legal-body p,
+        .legal-body li {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--color-body);
+        }
+
+        .legal-body ul {
+            padding-left: 20px;
+            margin: 0 0 16px;
+        }
+
+        .legal-body li {
+            margin-bottom: 8px;
+        }
+
+        .legal-body a {
+            color: var(--color-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .legal-meta {
+            background: var(--color-surface-soft);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--color-body);
+            margin-bottom: 40px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .legal-meta strong {
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        .legal-note {
+            background: var(--color-surface);
+            border-left: 3px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 14px;
+            color: var(--color-body);
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header" role="banner">
+        <div class="header__inner">
+           <a href="/" class="logo" aria-label="BreatheAlive home">
+                <img src="assets/images/logo.png" alt="BreatheAlive — Airway, Face & Sleep Centre" class="logo__img"
+                    width="220" height="80" loading="eager" decoding="async" />
+                <!-- <span>BreatheAlive</span> -->
+            </a>
+            <nav class="nav" aria-label="Primary">
+                <a class="nav__link" href="/">Home</a>
+                <a class="nav__link" href="about.html">About</a>
+                <div class="nav__dropdown">
+                    <a class="nav__link" href="care.html" aria-haspopup="true">Care ▾</a>
+                    <div class="nav__dropdown-menu" role="menu">
+                        <a href="infants.html" role="menuitem">Infants</a>
+                        <a href="children.html" role="menuitem">Children</a>
+                        <a href="adults.html" role="menuitem">Adults</a>
+                    </div>
+                </div>
+                <a class="nav__link" href="locations.html">Locations</a>
+                <a class="nav__link" href="resources.html">Resources</a>
+                <a class="nav__link" href="contact.html">Contact</a>
+            </nav>
+            <div class="header__actions">
+                <a class="btn btn--secondary" href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+                <a class="btn btn--primary" href="book.html">Book Appointment</a>
+                <button class="header__menu-btn" data-menu-open aria-label="Open menu" aria-controls="mobile-drawer">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer" id="mobile-drawer" data-drawer aria-hidden="true">
+        <div class="drawer__head">
+            <a href="/" class="logo"><span class="logo__mark" aria-hidden="true">B</span><span>BreatheAlive</span></a>
+            <button class="drawer__close" data-menu-close aria-label="Close menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </div>
+        <nav class="drawer__nav" aria-label="Mobile">
+            <a href="/">Home</a>
+            <a href="about.html">About</a>
+            <a href="care.html">Care</a>
+            <a href="infants.html">— Infants</a>
+            <a href="children.html">— Children</a>
+            <a href="adults.html">— Adults</a>
+            <a href="locations.html">Locations</a>
+            <a href="resources.html">Resources</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="drawer__cta">
+            <a class="btn btn--primary" href="book.html">Book Appointment</a>
+            <a class="btn btn--secondary" href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <div class="container">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Privacy Policy</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section" style="padding-top: 24px;">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="label">Legal</span>
+                    <h1 style="font-size: clamp(34px, 4vw, 52px);">Privacy Policy</h1>
+                    <p class="lead">This policy explains what personal information BreatheAlive collects, how we use it,
+                        and the choices you have.</p>
+                </div>
+
+                <div class="legal-meta" data-reveal>
+                    <span><strong>Effective date:</strong> 1 January 2026</span>
+                    <span><strong>Last updated:</strong> 1 January 2026</span>
+                </div>
+
+                <div class="legal-layout">
+                    <!-- TOC -->
+                    <aside class="legal-toc" aria-label="Table of contents">
+                        <h4>On this page</h4>
+                        <ol>
+                            <li><a href="#overview">1. Overview</a></li>
+                            <li><a href="#information-we-collect">2. Information we collect</a></li>
+                            <li><a href="#how-we-use">3. How we use information</a></li>
+                            <li><a href="#health-data">4. Health information</a></li>
+                            <li><a href="#legal-basis">5. Legal basis for processing</a></li>
+                            <li><a href="#sharing">6. Sharing &amp; disclosure</a></li>
+                            <li><a href="#cookies">7. Cookies &amp; analytics</a></li>
+                            <li><a href="#security">8. Data security</a></li>
+                            <li><a href="#retention">9. Data retention</a></li>
+                            <li><a href="#your-rights">10. Your rights</a></li>
+                            <li><a href="#children">11. Children's privacy</a></li>
+                            <li><a href="#third-party">12. Third-party services</a></li>
+                            <li><a href="#changes">13. Changes to this policy</a></li>
+                            <li><a href="#contact">14. Contact us</a></li>
+                        </ol>
+                    </aside>
+
+                    <!-- Body -->
+                    <article class="legal-body">
+
+                        <h2 id="overview">1. Overview</h2>
+                        <p>BreatheAlive ("we", "us", "our") is committed to protecting the privacy of everyone who
+                            interacts with our website, clinics, and services. This Privacy Policy describes how we
+                            collect, use, store, and share personal information when you visit our website, contact us,
+                            or book an appointment.</p>
+                        <p>This policy applies to <a href="https://breathealive.in/">breathealive.in</a> and its
+                            subpages, as well as to information collected at our clinics in Bengaluru, Hyderabad, and
+                            Kannur.</p>
+
+                        <h2 id="information-we-collect">2. Information we collect</h2>
+                        <p>We may collect the following categories of information:</p>
+
+                        <h3>Information you provide to us</h3>
+                        <ul>
+                            <li><strong>Contact details</strong> — name, phone number, email address, preferred city.
+                            </li>
+                            <li><strong>Appointment information</strong> — reason for consultation, preferred date and
+                                time, patient type (infant, child, adult).</li>
+                            <li><strong>Health information</strong> — information you voluntarily share about symptoms,
+                                concerns, or medical history through forms, emails, or during consultations.</li>
+                            <li><strong>Communications</strong> — messages sent via our contact form, email, WhatsApp,
+                                or phone.</li>
+                        </ul>
+
+                        <h3>Information collected automatically</h3>
+                        <ul>
+                            <li><strong>Usage data</strong> — pages viewed, time on page, and general interaction
+                                patterns.</li>
+                            <li><strong>Device &amp; browser information</strong> — IP address, browser type, operating
+                                system, and approximate location derived from IP.</li>
+                            <li><strong>Cookies</strong> — small files stored on your device. See section 7 for details.
+                            </li>
+                        </ul>
+
+                        <h2 id="how-we-use">3. How we use information</h2>
+                        <p>We use the information we collect to:</p>
+                        <ul>
+                            <li>Respond to enquiries and provide requested information.</li>
+                            <li>Schedule, confirm, and manage appointments.</li>
+                            <li>Coordinate care across our clinical team where relevant.</li>
+                            <li>Improve our website, services, and patient experience.</li>
+                            <li>Send occasional updates you have opted into (e.g. resources newsletter).</li>
+                            <li>Comply with applicable legal and regulatory obligations.</li>
+                        </ul>
+
+                        <h2 id="health-data">4. Health information</h2>
+                        <p>Health information is treated with the highest level of confidentiality. We only collect
+                            health information that is relevant to your consultation or enquiry, and we use it strictly
+                            for the purpose of providing care or responding to your request.</p>
+                        <div class="legal-note">
+                            <strong>Sensitive information:</strong> Please do not share detailed medical history through
+                            general enquiry forms. We recommend sharing sensitive health information directly during a
+                            consultation or via a secure channel we provide.
+                        </div>
+
+                        <h2 id="legal-basis">5. Legal basis for processing</h2>
+                        <p>We process personal information on the following bases:</p>
+                        <ul>
+                            <li><strong>Consent</strong> — for newsletters and optional communications.</li>
+                            <li><strong>Contract</strong> — to provide services you have requested, such as scheduling
+                                an appointment.</li>
+                            <li><strong>Legitimate interest</strong> — to improve our services, ensure site security,
+                                and communicate with you about your care.</li>
+                            <li><strong>Legal obligation</strong> — where required by applicable law or regulation.</li>
+                        </ul>
+
+                        <h2 id="sharing">6. Sharing &amp; disclosure</h2>
+                        <p>We do not sell your personal information. We may share information with:</p>
+                        <ul>
+                            <li><strong>Clinical team members</strong> — to coordinate your care where appropriate.</li>
+                            <li><strong>Service providers</strong> — such as hosting, email, or appointment systems,
+                                under confidentiality obligations.</li>
+                            <li><strong>Referring or coordinating specialists</strong> — only with your knowledge when
+                                part of your care.</li>
+                            <li><strong>Legal authorities</strong> — where we are required to do so by law or to protect
+                                rights and safety.</li>
+                        </ul>
+
+                        <h2 id="cookies">7. Cookies &amp; analytics</h2>
+                        <p>Our website may use cookies and similar technologies to improve functionality, remember
+                            preferences, and understand how the site is used.</p>
+                        <p>You can control cookies through your browser settings. Disabling cookies may affect some site
+                            features but should not prevent you from accessing core content.</p>
+                        <p>Where analytics tools are used, we configure them to minimise the collection of personally
+                            identifiable information.</p>
+
+                        <h2 id="security">8. Data security</h2>
+                        <p>We use reasonable administrative, technical, and physical safeguards to protect personal
+                            information against unauthorised access, loss, misuse, or alteration. These include
+                            encrypted transmission (HTTPS), access controls, and periodic review of our practices.</p>
+                        <p>No method of transmission over the internet is completely secure, and we cannot guarantee
+                            absolute security. We encourage you not to share sensitive information through unsecured
+                            channels.</p>
+
+                        <h2 id="retention">9. Data retention</h2>
+                        <p>We retain personal information for as long as necessary to fulfil the purposes described in
+                            this policy, or as required by applicable law. Appointment and clinical records are retained
+                            in accordance with applicable medical record retention requirements in India. Enquiry data
+                            is typically retained for a shorter period.</p>
+
+                        <h2 id="your-rights">10. Your rights</h2>
+                        <p>Depending on applicable law, you may have the right to:</p>
+                        <ul>
+                            <li>Access the personal information we hold about you.</li>
+                            <li>Request correction of inaccurate information.</li>
+                            <li>Request deletion of information, where legally permissible.</li>
+                            <li>Withdraw consent for optional communications.</li>
+                            <li>Lodge a complaint with the relevant authority.</li>
+                        </ul>
+                        <p>To exercise any of these rights, please contact us using the details at the end of this
+                            policy.</p>
+
+                        <h2 id="children">11. Children's privacy</h2>
+                        <p>Our website and services are intended for parents, guardians, and adult patients. For
+                            consultations involving infants, children, or adolescents, personal information is provided
+                            by a parent or legal guardian. We do not knowingly collect information from children without
+                            appropriate consent.</p>
+
+                        <h2 id="third-party">12. Third-party services</h2>
+                        <p>Our website may include links to third-party services, including Google Maps for location
+                            information and WhatsApp for messaging. These services operate under their own privacy
+                            policies, which we encourage you to review.</p>
+
+                        <h2 id="changes">13. Changes to this policy</h2>
+                        <p>We may update this Privacy Policy from time to time. The "Last updated" date at the top of
+                            this page reflects the most recent revision. Continued use of our website after any changes
+                            indicates acceptance of the updated policy.</p>
+
+                        <h2 id="contact">14. Contact us</h2>
+                        <p>If you have any questions, requests, or concerns about this Privacy Policy or how we handle
+                            your information, please contact us:</p>
+                        <ul>
+                            <li>Email: <a href="mailto:privacy@breathealive.in">privacy@breathealive.in</a></li>
+                            <li>Phone: <a href="tel:+910000000000">+91 00000 00000</a></li>
+                            <li>Website: <a href="contact.html">Contact page</a></li>
+                        </ul>
+
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="/" class="logo" aria-label="BreatheAlive home">
+                        <img src="assets/images/logo.png" alt="BreatheAlive" class="logo__img" width="220" height="52"
+                            loading="lazy" decoding="async" />
+                    </a>
+                    <p class="footer__desc">Advanced Airway, Face &amp; Sleep Care — for infants, children and adults.
+                    </p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="care.html">Care</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="book.html">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Locations</h4>
+                    <ul>
+                        <li><a href="locations.html#bengaluru">Bengaluru</a></li>
+                        <li><a href="locations.html#hyderabad">Hyderabad</a></li>
+                        <li><a href="locations.html#kannur">Kannur</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+                        <li><a href="mailto:hello@breathealive.in">hello@breathealive.in</a></li>
+                        <li><a href="https://wa.me/910000000000" rel="noopener">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div>© <span class="year"></span> BreatheAlive. All rights reserved.</div>
+                <div class="footer__legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom-bar" role="navigation" aria-label="Quick actions">
+        <div class="container bottom-bar__inner">
+            <a href="tel:+910000000000">Call</a>
+            <a href="https://wa.me/910000000000" rel="noopener">WhatsApp</a>
+            <a class="is-primary" href="book.html">Book Appointment</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js" defer></script>
+    <script>
+        document.querySelectorAll('.year').forEach(function (e) {
+            e.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>

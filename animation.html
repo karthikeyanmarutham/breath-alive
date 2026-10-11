@@ -1,0 +1,178 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation Test</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #f4fbf8 0%, #edf8f7 45%, #f8fcfb 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        .animation-container {
+            width: min(82vw, 820px);
+            padding: 24px;
+        }
+
+        .animation-box {
+            width: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        .animation-content {
+            width: 100%;
+        }
+
+        .logo-animate {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+            filter: drop-shadow(0 14px 30px rgba(23, 94, 103, 0.12));
+        }
+
+        .logo-animate .svg-elem-1,
+        .logo-animate .svg-elem-2,
+        .logo-animate .svg-elem-3,
+        .logo-animate .svg-elem-4,
+        .logo-animate .svg-elem-5,
+        .logo-animate .svg-elem-6,
+        .logo-animate .svg-elem-7 {
+            fill: transparent;
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .logo-animate .svg-elem-1 {
+            --fill: rgb(78, 185, 125);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.2s;
+        }
+
+        .logo-animate .svg-elem-2 {
+            --fill: rgb(177, 222, 105);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.35s;
+        }
+
+        .logo-animate .svg-elem-3 {
+            --fill: rgb(109, 188, 218);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.5s;
+        }
+
+        .logo-animate .svg-elem-4 {
+            --fill: rgb(77, 184, 191);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.65s;
+        }
+
+        .logo-animate .svg-elem-5 {
+            --fill: rgb(23, 94, 103);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.8s;
+        }
+
+        .logo-animate .svg-elem-6 {
+            --fill: rgb(110, 191, 220);
+            animation: logoReveal 0.75s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 0.95s;
+        }
+
+        .logo-animate .svg-elem-7 {
+            --fill: rgb(39, 140, 151);
+            animation: logoReveal 0.8s cubic-bezier(0.47, 0, 0.745, 0.715) forwards 1.1s;
+        }
+
+        @keyframes logoReveal {
+            0% {
+                fill: transparent;
+                opacity: 0;
+                transform: translateY(14px) scale(0.95);
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            100% {
+                fill: var(--fill);
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .logo-animate .svg-elem-1,
+            .logo-animate .svg-elem-2,
+            .logo-animate .svg-elem-3,
+            .logo-animate .svg-elem-4,
+            .logo-animate .svg-elem-5,
+            .logo-animate .svg-elem-6,
+            .logo-animate .svg-elem-7 {
+                animation: none;
+                opacity: 1;
+                fill: var(--fill);
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animation-container">
+        <div class="animation-box">
+            <div class="animation-content">
+                <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+                <svg class="logo-animate" width="100%" height="100%" viewBox="0 0 821 702" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                    <g transform="matrix(1,0,0,1,-350.664251,-419.480631)">
+                        <g id="logo">
+                            <g transform="matrix(1,0,0,1,215,274)">
+                                <path
+                                    d="M207,847C202.833,840.667 359.072,717.621 515,696C683.649,672.615 814.833,794.667 819,801C823.167,807.333 715.563,729.138 540,734C408.765,737.634 211.167,853.333 207,847Z"
+                                    class="svg-elem-1"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,215,274)">
+                                <path
+                                    d="M691,547C697.667,541.833 647.704,585.987 682,629C726.216,684.455 769.344,637.933 767,646C759.194,672.864 682.241,724.718 642,660C595.654,585.464 684.333,552.167 691,547Z"
+                                    class="svg-elem-2"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,211,273)">
+                                <path
+                                    d="M609,430C602.5,425.833 640.428,435.395 656,433C712.719,424.275 758.406,370.653 813,370C869.607,369.323 904,398.833 908,403C912,407.167 876.633,385.118 837,395C806.286,402.658 741.432,451.014 695,458C655.989,463.87 615.5,434.167 609,430Z"
+                                    class="svg-elem-3"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,232,327)">
+                                <path
+                                    d="M597,412C595.333,406.833 641.428,431.395 678,429C735.264,425.249 765.939,376.642 820,369C902.607,357.323 932,399.667 939,405C942.796,407.892 864.633,386.118 825,396C794.286,403.658 734.432,453.014 688,460C648.989,465.87 598.667,417.167 597,412Z"
+                                    class="svg-elem-4"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,217,273)">
+                                <path
+                                    d="M459,210C459,210 478.816,210.213 487,215C495.833,220.167 503.833,229.833 510,240C516.167,250.167 518.833,263.167 524,276C528.608,287.445 549,308 549,308L584,330C584,330 600.798,340.381 602,353C603.303,366.677 587,376 587,376C587,376 575.394,386.096 576,392C576.667,398.5 589.642,407.492 590,417C590.395,427.504 579,437 579,437C579,437 590.564,442.003 593,450C596.508,461.514 582.265,466.744 583,476C583.833,486.5 597.358,497.987 598,513C598.856,533.016 578,542 578,542C567.579,549.022 518,556 518,556C518,556 497.744,562.224 490,569C482,576 474.501,586.359 470,598C465.167,610.5 461,644 461,644C461.439,644.327 451.026,670.307 443,679C435.617,686.996 428.745,694.522 420,701C411,707.667 389,719 389,719C389,719 405.919,695.877 412,683C423.333,659 427,617 427,617C430.138,602.76 433.529,588.263 440,576C440,576 452.333,559.5 462,553C471.667,546.5 486.48,540.071 498,538C512.833,535.333 550.351,534.184 554,533C576.139,525.818 578,517 578,517C577.994,494.309 566.757,488.206 565.223,477.472C563.702,466.829 574.678,455.259 574.085,453.056C572.67,447.798 555.499,443.756 555.499,443.756C554.764,442.815 571.967,425.934 572.069,417.973C572.174,409.719 553.082,403.53 556.924,389.44C558.934,382.068 567.788,372.424 567.788,372.424C567.788,372.424 581.335,358.928 578.07,351.997C574.804,345.067 548.195,330.842 548.195,330.842C534.011,321.024 521.386,310.276 510.728,291.306C510.728,291.306 492.428,246.33 486.058,235.975L459,210Z"
+                                    class="svg-elem-5"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,215,274)">
+                                <path
+                                    d="M336,740C336,740 357.283,704.817 360,685C362.833,664.333 360.009,638.03 353,616C343.667,586.667 339.667,560.667 346,539C352.333,517.333 373.167,498.833 391,486C408.833,473.167 435,466.833 453,462C467.896,458 499,457 499,457L442,485C442,485 413.259,501.5 405,514C380.333,551.333 386.029,551.881 384,565C379,597.333 387.091,598.574 390,651C391.703,681.694 387.704,692.167 379,706C369.667,720.833 336,740 336,740Z"
+                                    class="svg-elem-6"></path>
+                            </g>
+                            <g transform="matrix(1,0,0,1,215,274)">
+                                <path
+                                    d="M314,713C319.918,649.364 264.237,597.238 260,556C255.403,511.251 265.209,501.027 279.541,473.857C292.59,449.118 372.262,410.825 426.402,413.823C506.97,418.286 531.328,423.683 542,417C545.646,420.725 518.641,438 502.329,439.584C456.416,444.041 395.386,457.536 371.495,473.659C339.097,495.522 323.746,523.822 321,557C318.344,589.086 345.346,670.182 342,672C339.486,707.421 329.986,738.05 302,756C286.302,766.922 176.2,658.576 152,582C128.018,506.111 132.84,432.994 151,382C166.592,338.217 190.939,300.05 219,263C248.739,223.734 307.033,187.611 353,169C393.35,152.663 481.248,143.086 483,146C549.046,151.641 607.173,172.399 657,209C682.572,229.751 706.642,253.848 718,276C718.743,267.801 618.645,191.7 569,185C522.71,178.753 463.167,181.667 425,189C394.11,194.935 355.667,213.5 330,231C304.333,248.5 274.474,277.116 255,302C234,328.833 222.833,363.167 212,393C202.513,419.126 197.482,453.209 199,483C200.468,511.8 205.614,532.458 215,561C231.333,610.667 275.667,647 298,679"
+                                    class="svg-elem-7"></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
