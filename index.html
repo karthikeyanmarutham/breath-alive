@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BreatheAlive — Advanced Airway, Face & Sleep Care</title>
+    <title>BreatheAlive — Advanced Airway, Face &amp; Sleep Care</title>
     <meta name="description"
         content="Specialist-led airway, breathing, sleep and facial development care for infants, children and adults. Clinics in Bengaluru, Hyderabad and Kannur." />
     <link rel="canonical" href="https://breathealive.in/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="BreatheAlive — Advanced Airway, Face & Sleep Care" />
+    <meta property="og:title" content="BreatheAlive — Advanced Airway, Face &amp; Sleep Care" />
     <meta property="og:description" content="Breathe Better. Sleep Better. Live Better." />
     <meta property="og:url" content="https://breathealive.in/" />
     <meta property="og:image" content="https://breathealive.in/og.jpg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BreatheAlive — Advanced Airway, Face & Sleep Care" />
+    <meta name="twitter:title" content="BreatheAlive — Advanced Airway, Face &amp; Sleep Care" />
     <meta name="twitter:description" content="Breathe Better. Sleep Better. Live Better." />
 
     <!-- Fonts -->
@@ -29,7 +29,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Structured data: Organization + MedicalClinic -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo.png" />
+
+    <!-- Structured data: MedicalClinic -->
     <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -62,20 +66,22 @@
 
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <!-- ============================= HEADER ============================= -->
     <header class="header" role="banner">
         <div class="header__inner">
             <a href="/" class="logo" aria-label="BreatheAlive home">
                 <img src="assets/images/logo.png" alt="BreatheAlive — Airway, Face & Sleep Centre" class="logo__img"
                     width="220" height="80" loading="eager" decoding="async" />
-                <!-- <span>BreatheAlive</span> -->
             </a>
 
             <nav class="nav" aria-label="Primary">
-                <a class="nav__link" href="/">Home</a>
+                <a class="nav__link" href="/" aria-current="page">Home</a>
                 <a class="nav__link" href="about.html">About</a>
                 <div class="nav__dropdown">
-                    <a class="nav__link" href="care.html" aria-haspopup="true">Care ▾</a>
+                    <a class="nav__link" href="care.html" aria-haspopup="true">Care</a>
                     <div class="nav__dropdown-menu" role="menu">
                         <a href="infants.html" role="menuitem">Infants</a>
                         <a href="children.html" role="menuitem">Children</a>
@@ -103,7 +109,10 @@
     <!-- Mobile drawer -->
     <div class="drawer" id="mobile-drawer" data-drawer aria-hidden="true">
         <div class="drawer__head">
-            <a href="/" class="logo"><span class="logo__mark" aria-hidden="true">B</span><span>BreatheAlive</span></a>
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="BreatheAlive" class="logo__img" width="180" height="46"
+                    decoding="async" />
+            </a>
             <button class="drawer__close" data-menu-close aria-label="Close menu">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     aria-hidden="true">
@@ -112,7 +121,7 @@
             </button>
         </div>
         <nav class="drawer__nav" aria-label="Mobile">
-            <a href="/">Home</a>
+            <a href="/" aria-current="page">Home</a>
             <a href="about.html">About</a>
             <a href="care.html">Care</a>
             <a href="infants.html">— Infants</a>
@@ -154,8 +163,7 @@
                         </p>
                     </div>
 
-                    <div class="hero__visual" aria-hidden="true">
-                        <!-- Abstract airway / breath graphic -->
+                    <div class="hero__visual" data-parallax="0.05" aria-hidden="true">
                         <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img">
                             <defs>
                                 <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
@@ -228,7 +236,6 @@
 
         <!-- ============================= STATS / TRUSTED CARE ============================= -->
         <section class="section stats-section" aria-labelledby="stats-title">
-            <!-- Decorative floating orbs (parallax) -->
             <span class="float-orb float-orb--1" data-parallax="0.15" aria-hidden="true"></span>
             <span class="float-orb float-orb--2" data-parallax="-0.12" aria-hidden="true"></span>
             <span class="float-orb float-orb--3" data-parallax="0.08" aria-hidden="true"></span>
@@ -280,7 +287,7 @@
                         </p>
                     </div>
 
-                    <div class="connection" data-reveal aria-hidden="true">
+                    <div class="connection" data-reveal data-parallax="0.04" aria-hidden="true">
                         <svg viewBox="0 0 600 420" role="img">
                             <defs>
                                 <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
@@ -534,7 +541,9 @@
 
                 <div class="grid-4">
                     <article class="doctor" data-reveal>
-                        <div class="doctor__avatar" aria-hidden="true"><img src="assets/profiles/dr_ratheesh.webp" />
+                        <div class="doctor__avatar" aria-hidden="true">
+                            <img src="assets/profiles/dr_ratheesh.webp" alt="" loading="lazy" decoding="async"
+                                width="400" height="400" />
                         </div>
                         <h4>Dr Ratheesh A V</h4>
                         <div class="doctor__specialty">Airway &amp; Sleep</div>
@@ -542,7 +551,9 @@
                         <a class="card__link" href="about.html#team">View Profile</a>
                     </article>
                     <article class="doctor" data-reveal>
-                        <div class="doctor__avatar" aria-hidden="true"><img src="assets/profiles/dr_aswathi.webp" />
+                        <div class="doctor__avatar" aria-hidden="true">
+                            <img src="assets/profiles/dr_aswathi.webp" alt="" loading="lazy" decoding="async"
+                                width="400" height="400" />
                         </div>
                         <h4>Dr Aswathi P T</h4>
                         <div class="doctor__specialty">Paediatric Airway</div>
@@ -550,15 +561,20 @@
                         <a class="card__link" href="about.html#team">View Profile</a>
                     </article>
                     <article class="doctor" data-reveal>
-                        <div class="doctor__avatar" aria-hidden="true"><img
-                                src="assets/profiles/dr_manasa_syamala.webp" /></div>
+                        <div class="doctor__avatar" aria-hidden="true">
+                            <img src="assets/profiles/dr_manasa_syamala.webp" alt="" loading="lazy" decoding="async"
+                                width="400" height="400" />
+                        </div>
                         <h4>Dr Manasa Syamala</h4>
                         <div class="doctor__specialty">Sleep &amp; Breathing</div>
                         <div class="doctor__meta">Adult sleep and breathing concerns.</div>
                         <a class="card__link" href="about.html#team">View Profile</a>
                     </article>
                     <article class="doctor" data-reveal>
-                        <div class="doctor__avatar" aria-hidden="true"><img src="assets/profiles/dr_ramya.webp" /></div>
+                        <div class="doctor__avatar" aria-hidden="true">
+                            <img src="assets/profiles/dr_ramya.webp" alt="" loading="lazy" decoding="async" width="400"
+                                height="400" />
+                        </div>
                         <h4>Dr Ramya V</h4>
                         <div class="doctor__specialty">Facial Development</div>
                         <div class="doctor__meta">Facial growth and oral function.</div>
@@ -583,7 +599,7 @@
                             <h3>Bengaluru</h3>
                             <p>BreatheAlive Bengaluru — airway, face &amp; sleep care.</p>
                             <div class="btn-row">
-                                <a class="btn btn--secondary" href="bengaluru.html">View Clinic</a>
+                                <a class="btn btn--secondary" href="locations.html#bengaluru">View Clinic</a>
                                 <a class="btn btn--primary" href="book.html">Book</a>
                             </div>
                         </div>
@@ -784,7 +800,7 @@
                 <div>
                     <h4>Locations</h4>
                     <ul>
-                        <li><a href="bengaluru.html">Bengaluru</a></li>
+                        <li><a href="locations.html#bengaluru">Bengaluru</a></li>
                         <li><a href="locations.html#hyderabad">Hyderabad</a></li>
                         <li><a href="locations.html#kannur">Kannur</a></li>
                     </ul>
@@ -820,8 +836,18 @@
         </div>
     </div>
 
+    <!-- Back-to-top button -->
+    <button class="to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
     <script src="assets/js/main.js" defer></script>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
