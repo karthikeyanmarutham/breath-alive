@@ -89,7 +89,9 @@
             font-size: clamp(22px, 2.2vw, 28px);
             margin-top: 48px;
             margin-bottom: 16px;
-            scroll-margin-top: 100px;
+            /* Header clearance now comes globally from `html {
+               scroll-padding-top }` in styles.css — keeping a second
+               offset here would stack and push headings too far down. */
         }
 
         .legal-body h2:first-child {
@@ -190,7 +192,7 @@
                 <a class="nav__link" href="/">Home</a>
                 <a class="nav__link" href="about.html">About</a>
                 <div class="nav__dropdown">
-                    <a class="nav__link" href="care.html" aria-haspopup="true">Care ▾</a>
+                    <a class="nav__link" href="javascript:void(0)" aria-haspopup="true">Care ▾</a>
                     <div class="nav__dropdown-menu" role="menu">
                         <a href="infants.html" role="menuitem">Infants</a>
                         <a href="children.html" role="menuitem">Children</a>

@@ -27,6 +27,7 @@
     if (!drawer) return;
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
+    menuBtn && menuBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     closeBtn && closeBtn.focus();
   };
@@ -34,18 +35,51 @@
     if (!drawer) return;
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
+    menuBtn && menuBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
     menuBtn && menuBtn.focus();
   };
 
+  menuBtn && menuBtn.setAttribute('aria-expanded', 'false');
   menuBtn && menuBtn.addEventListener('click', openDrawer);
   closeBtn && closeBtn.addEventListener('click', closeDrawer);
   drawer && drawer.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') closeDrawer();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) closeDrawer();
+    if (!drawer || !drawer.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+
+    /* Focus trap: while the full-screen menu is open, Tab must cycle
+       inside it — otherwise keyboard users fall back to the page hidden
+       underneath the overlay. */
+    if (e.key !== 'Tab') return;
+    const focusables = drawer.querySelectorAll('a[href], button:not([disabled])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (!drawer.contains(document.activeElement)) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
+      return;
+    }
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
+
+  /* If the viewport grows past the desktop breakpoint (tablet rotation,
+     window resize) the hamburger is hidden — close the drawer so the
+     screen is never left covered by an unreachable overlay. */
+  window.addEventListener('resize', () => {
+    if (drawer && drawer.classList.contains('is-open') && window.innerWidth > 1100) {
+      closeDrawer();
+    }
+  }, { passive: true });
 
   /* --------------------------------------------------------
      3. Reveal on scroll (with stagger inside grids)
@@ -53,7 +87,7 @@
   const revealEls = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealEls.length) {
     // auto-stagger children of grids
-    document.querySelectorAll('.grid-2, .grid-3, .grid-4, .stats-grid, .steps').forEach((grid) => {
+    document.querySelectorAll('.grid-2, .grid-3, .grid-4, .stats-grid, .steps, .trust-strip__inner').forEach((grid) => {
       const kids = grid.querySelectorAll('[data-reveal]');
       kids.forEach((el, i) => {
         el.style.setProperty('--reveal-delay', `${i * 70}ms`);
@@ -116,7 +150,16 @@
   /* --------------------------------------------------------
      5. Parallax on scroll (hero visual, connection, orbs)
      -------------------------------------------------------- */
-  if (!prefersReduced) {
+  /* Parallax is desktop-only by design:
+     - on phones/tablets it costs main-thread scroll work for an effect
+       that is barely visible on a small viewport, and
+     - on touch devices the effect fights with momentum scrolling.
+     Anything else (reduced-motion users included) keeps the subtle depth. */
+  const parallaxAllowed =
+    !prefersReduced &&
+    window.matchMedia('(min-width: 769px) and (hover: hover) and (pointer: fine)').matches;
+
+  if (parallaxAllowed) {
     const parallaxTargets = [
       ...document.querySelectorAll('[data-parallax]'),
       document.querySelector('.hero__visual'),
@@ -172,13 +215,23 @@
      -------------------------------------------------------- */
   const progress = document.querySelector('.scroll-progress');
   if (progress) {
+    let ticking = false;
     const updateProgress = () => {
       const h = document.documentElement;
       const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
       progress.style.width = (scrolled * 100).toFixed(2) + '%';
+      ticking = false;
+    };
+    /* Coalesced into one rAF per frame so scrolling never triggers more
+       than one style/layout read, no matter how fast the user scrolls. */
+    const onScrollProgress = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateProgress);
     };
     updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('scroll', onScrollProgress, { passive: true });
+    window.addEventListener('resize', onScrollProgress, { passive: true });
   }
 
   /* --------------------------------------------------------
@@ -209,6 +262,10 @@
       e.preventDefault();
       const status = form.querySelector('[data-form-status]');
       if (status) {
+        /* Live region so screen readers announce the confirmation
+           instead of the message silently replacing text on screen. */
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
         status.textContent = 'Thank you — we will contact you shortly.';
         status.style.color = 'var(--color-primary)';
       }

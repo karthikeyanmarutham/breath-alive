@@ -183,6 +183,11 @@
 
         .featured__cta::after {
             content: " →";
+            /* Always inline + transformable so the arrow can slide —
+               previously `display:inline-block` only applied on hover,
+               leaving the transition with nothing to animate. */
+            display: inline-block;
+            transform: translateX(0);
             transition: transform var(--dur-fast) var(--ease);
         }
 
@@ -405,7 +410,7 @@
                 <a class="nav__link" href="/">Home</a>
                 <a class="nav__link" href="about.html">About</a>
                 <div class="nav__dropdown">
-                    <a class="nav__link" href="care.html" aria-haspopup="true">Care ▾</a>
+                    <a class="nav__link" href="javascript:void(0)" aria-haspopup="true">Care ▾</a>
                     <div class="nav__dropdown-menu" role="menu">
                         <a href="infants.html" role="menuitem">Infants</a>
                         <a href="children.html" role="menuitem">Children</a>
